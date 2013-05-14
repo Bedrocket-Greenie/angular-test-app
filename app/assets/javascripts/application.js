@@ -10,10 +10,5 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
-//= require jquery
-//= require jquery_ujs
+//= require angular
 //= require_tree .
-//= require angular.min.js
-//= require angular-resource.js
-//= require ../angular/app.js
-//= require_tree ../angular

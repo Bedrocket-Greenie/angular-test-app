@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="app">
+<html ng-app>
 <head>
   <title>AngularTest</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
@@ -8,8 +8,9 @@
 </head>
 <body>
 
-<div class="container">
-  <div ng-view></div>
+<div id="container">
+  <%= yield %>
 </div>
+
 </body>
 </html>
