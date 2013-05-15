@@ -7,10 +7,20 @@
   <ul>
     <li ng-repeat="entry in entries">
     {{entry.name}}
-    <span ng-show="entry.winner" class="winner">Winner</span>
+    <span ng-show="entry.winner" ng-class="{highlight: entry == lastWinner}" class="winner">Winner</span>
     </li>
   </ul>
 
   <button ng-click="drawWinner()">Draw Wininer</button>
 </div>
 
+
+<%# Data Binding %>
+<div ng-controller="EggIoCtrl">
+    {{data.message}}, world
+
+    <div class="{{data.message}}">
+      Wrap me in a dynamic class
+    </div>
+</div>
+</div>
