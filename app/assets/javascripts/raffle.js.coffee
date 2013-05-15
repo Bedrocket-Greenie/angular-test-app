@@ -25,6 +25,10 @@ app.factory "Entry", ["$resource", ($resource) ->
 ]
 
 # Controllers according to egg.io
-@EggIoCtrl = ["$scope", ($scope) ->
-  $scope.data = {message: "Hello"}
+@FirstCtrl = ["$scope", ($scope) ->
+  # $scope.data = {message: "Hello"}
+]
+
+@SecCtrl = ["$scope", ($scope) ->
+  # $scope.data = {message: "Hello"}
 ]

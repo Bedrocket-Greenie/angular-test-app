@@ -16,11 +16,21 @@
 
 
 <%# Data Binding %>
-<div ng-controller="EggIoCtrl">
-    {{data.message}}, world
+<input type="text" ng-model="message">
+{{message}}
 
-    <div class="{{data.message}}">
-      Wrap me in a dynamic class
-    </div>
+<div ng-controller="FirstCtrl">
+  <input type="text" ng-model="message">
+  {{message}}
 </div>
+
+<div ng-controller="SecCtrl">
+  <input type="text" ng-model="message">
+  {{message}}
+
+  <div class="{{message}}">
+    Wrap me in a dynamic class
+  </div>
+</div>
+
 </div>
