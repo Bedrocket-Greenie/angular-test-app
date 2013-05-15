@@ -12,7 +12,6 @@ app.factory "Entry", ["$resource", ($resource) ->
     $scope.entries.push(entry)
     $scope.newEntry = {}
 
-
   $scope.drawWinner = ->
     pool = []
     angular.forEach $scope.entries, (entry) ->
@@ -26,14 +25,39 @@ app.factory "Entry", ["$resource", ($resource) ->
 
 # Controllers according to egg.io
 @FirstCtrl = ["$scope", ($scope) ->
-  $scope.persons = [
-  ]
+  $scope.animals = []
 
   $scope.addName = ->
-    $scope.persons.push($scope.newPerson)
-    $scope.newPerson = {}
+    $scope.animals.push($scope.animal)
+    $scope.animal = {}
 ]
 
-@SecCtrl = ["$scope", ($scope) ->
-  # $scope.data = {message: "Hello"}
+app.factory "Person", ["$resource", ($resource) ->
+  $resource("/people/:id", {id: "@id"}, {update: {method: "PUT"}})
+]
+
+@SecCtrl = ["$scope", "Person", ($scope, Person) ->
+  $scope.persons = Person.query()
+
+  $scope.addName = ->
+    newPersonName = Person.save($scope.newPerson)
+    $scope.persons.push(newPersonName)
+    $scope.newEntry = {}
+]
+
+# Angular Services. Sharing data between 2 different controllers
+app.factory("Data", ()->
+    return { message: "I'm data from a service" }
+)
+
+@SharedCtrlOne = ["$scope", "Data", ($scope, Data) ->
+  $scope.data = Data
+]
+
+@SharedCtrlTwo = ["$scope", "Data", ($scope, Data) ->
+  $scope.data = Data
+
+  #Defining a method on a scope
+  $scope.reversedMessage = (message) ->
+    return message.split("").reverse().join("")
 ]

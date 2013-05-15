@@ -1,29 +1,48 @@
-<%# <h1>Raffle</h1> %>
-<%# <div ng-controller="RaffleCtrl"> %>
-  <%# <form ng-submit="addEntry()"> %>
-    <%# <input type="text" ng-model="newEntry.name"> %>
-    <%# <input type="submit" value="Add"> %>
-  <%# </form> %>
-  <%# <ul> %>
-    <%# <li ng-repeat="entry in entries"> %>
-    <%# {{entry.name}} %>
-    <%# <span ng-show="entry.winner" ng-class="{highlight: entry == lastWinner}" class="winner">Winner</span> %>
-    <%# </li> %>
-  <%# </ul> %>
+<div ng-app="Raffler">
+  <h1>Raffle App</h1>
+  <div ng-controller="RaffleCtrl">
+    <form ng-submit="addEntry()">
+      <input type="text" ng-model="newEntry.name">
+      <input type="submit" value="Add">
+    </form>
+    <ul>
+      <li ng-repeat="entry in entries">
+      {{entry.name}}
+      <span ng-show="entry.winner" ng-class="{highlight: entry == lastWinner}" class="winner">Winner</span>
+      </li>
+    </ul>
 
-  <%# <button ng-click="drawWinner()">Draw Wininer</button> %>
-<%# </div> %>
+    <button ng-click="drawWinner()">Draw Wininer</button>
+  </div>
 
+  <h1>Data Binding</h1>
+  <h2>Simple Data Binding</h2>
+  <h3>Doesn't persist</h3>
+  <input type="text" ng-model="data.message">
+  {{data.message}}
 
-<%# Data Binding %>
-<%# <input type="text" ng-model="message"> %>
-<%# {{message}} %>
+  <h2>Data Binding With Controller</h2>
+  <h3>Doesn't persist</h3>
+  <div ng-controller="FirstCtrl">
+    <form ng-submit="addName()">
+      <input type="text" ng-model="animal.name">
+      <input type="submit" value="Add Name">
+    </form>
 
-<div ng-controller="FirstCtrl">
-  <form ng-submit="addName()">
-    <input type="text" ng-model="newPerson.name">
-    <input type="submit" value="Add Name">
-  </form>
+    <ul>
+      <li ng-repeat="animal in animals">
+      {{animal.name}}
+      </li>
+    </ul>
+  </div>
+
+  <h2>Data Binding With Controller</h2>
+  <h3>Persisted</h3>
+  <div ng-controller="SecCtrl">
+    <form ng-submit="addName()">
+      <input type="text" ng-model="newPerson.name">
+      <input type="submit" value="Add Name">
+    </form>
 
     <ul>
       <li ng-repeat="people in persons">
@@ -31,15 +50,15 @@
       </li>
     </ul>
   </div>
-</div>
 
-<%# <div ng-controller="SecCtrl"> %>
-  <%# <input type="text" ng-model="message"> %>
-  <%# {{message}} %>
 
-  <%# <div class="{{message}}"> %>
-    <%# Wrap me in a dynamic class %>
-  <%# </div> %>
-<%# </div> %>
+  <div ng-controller="SharedCtrlOne">
+    <input type="text" ng-model="data.message">
+    <h3>{{data.message}}</h3>
+  </div>
 
+  <div ng-controller="SharedCtrlTwo">
+    <input type="text" ng-model="data.message">
+    <h3>{{reversedMessage(data.message)}}</h3>
+  </div>
 </div>
