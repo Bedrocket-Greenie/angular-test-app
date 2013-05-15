@@ -1,36 +1,45 @@
-<h1>Raffle</h1>
-<div ng-controller="RaffleCtrl">
-  <form ng-submit="addEntry()">
-    <input type="text" ng-model="newEntry.name">
-    <input type="submit" value="Add">
-  </form>
-  <ul>
-    <li ng-repeat="entry in entries">
-    {{entry.name}}
-    <span ng-show="entry.winner" ng-class="{highlight: entry == lastWinner}" class="winner">Winner</span>
-    </li>
-  </ul>
+<%# <h1>Raffle</h1> %>
+<%# <div ng-controller="RaffleCtrl"> %>
+  <%# <form ng-submit="addEntry()"> %>
+    <%# <input type="text" ng-model="newEntry.name"> %>
+    <%# <input type="submit" value="Add"> %>
+  <%# </form> %>
+  <%# <ul> %>
+    <%# <li ng-repeat="entry in entries"> %>
+    <%# {{entry.name}} %>
+    <%# <span ng-show="entry.winner" ng-class="{highlight: entry == lastWinner}" class="winner">Winner</span> %>
+    <%# </li> %>
+  <%# </ul> %>
 
-  <button ng-click="drawWinner()">Draw Wininer</button>
-</div>
+  <%# <button ng-click="drawWinner()">Draw Wininer</button> %>
+<%# </div> %>
 
 
 <%# Data Binding %>
-<input type="text" ng-model="message">
-{{message}}
+<%# <input type="text" ng-model="message"> %>
+<%# {{message}} %>
 
 <div ng-controller="FirstCtrl">
-  <input type="text" ng-model="message">
-  {{message}}
-</div>
+  <form ng-submit="addName()">
+    <input type="text" ng-model="newPerson.name">
+    <input type="submit" value="Add Name">
+  </form>
 
-<div ng-controller="SecCtrl">
-  <input type="text" ng-model="message">
-  {{message}}
-
-  <div class="{{message}}">
-    Wrap me in a dynamic class
+    <ul>
+      <li ng-repeat="people in persons">
+      {{people.name}}
+      </li>
+    </ul>
   </div>
 </div>
+
+<%# <div ng-controller="SecCtrl"> %>
+  <%# <input type="text" ng-model="message"> %>
+  <%# {{message}} %>
+
+  <%# <div class="{{message}}"> %>
+    <%# Wrap me in a dynamic class %>
+  <%# </div> %>
+<%# </div> %>
 
 </div>

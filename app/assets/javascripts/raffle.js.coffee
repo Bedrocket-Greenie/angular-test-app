@@ -26,7 +26,12 @@ app.factory "Entry", ["$resource", ($resource) ->
 
 # Controllers according to egg.io
 @FirstCtrl = ["$scope", ($scope) ->
-  # $scope.data = {message: "Hello"}
+  $scope.persons = [
+  ]
+
+  $scope.addName = ->
+    $scope.persons.push($scope.newPerson)
+    $scope.newPerson = {}
 ]
 
 @SecCtrl = ["$scope", ($scope) ->
