@@ -1,5 +1,6 @@
 <div ng-app="Raffler">
-  <h1>Raffle App</h1>
+
+  <h1>Angular Raffle App</h1>
   <div ng-controller="RaffleCtrl">
     <form ng-submit="addEntry()">
       <input type="text" ng-model="newEntry.name">
@@ -15,50 +16,70 @@
     <button ng-click="drawWinner()">Draw Wininer</button>
   </div>
 
-  <h1>Data Binding</h1>
-  <h2>Simple Data Binding</h2>
-  <h3>Doesn't persist</h3>
-  <input type="text" ng-model="data.message">
-  {{data.message}}
-
-  <h2>Data Binding With Controller</h2>
-  <h3>Doesn't persist</h3>
-  <div ng-controller="FirstCtrl">
-    <form ng-submit="addName()">
-      <input type="text" ng-model="animal.name">
-      <input type="submit" value="Add Name">
-    </form>
-
-    <ul>
-      <li ng-repeat="animal in animals">
-      {{animal.name}}
-      </li>
-    </ul>
-  </div>
-
-  <h2>Data Binding With Controller</h2>
-  <h3>Persisted</h3>
-  <div ng-controller="SecCtrl">
-    <form ng-submit="addName()">
-      <input type="text" ng-model="newPerson.name">
-      <input type="submit" value="Add Name">
-    </form>
-
-    <ul>
-      <li ng-repeat="people in persons">
-      {{people.name}}
-      </li>
-    </ul>
-  </div>
-
-
-  <div ng-controller="SharedCtrlOne">
+  <div class="spacer">
+    <h1>Data Binding</h1>
+    <h2>Simple Data Binding</h2>
+    <h3>Doesn't persist</h3>
     <input type="text" ng-model="data.message">
-    <h3>{{data.message}}</h3>
+    {{data.message}}
   </div>
 
-  <div ng-controller="SharedCtrlTwo">
-    <input type="text" ng-model="data.message">
-    <h3>{{reversedMessage(data.message)}}</h3>
+  <div class="spacer">
+    <h2>Data Binding With Controller</h2>
+    <h3>Doesn't persist</h3>
+
+    <%# [> Areas of the page are managed by controllers. <] %>
+    <div ng-controller="FirstCtrl">
+      <form ng-submit="addName()">
+        <input type="text" ng-model="animal.name">
+        <input type="submit" value="Add Name">
+      </form>
+
+      <ul>
+        <li ng-repeat="animal in animals">
+        {{animal.name}}
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="spacer">
+    <h2>Data Binding With Controller</h2>
+    <h3>Persisted</h3>
+    <div ng-controller="SecCtrl">
+      <form ng-submit="addName()">
+        <input type="text" ng-model="newPerson.name">
+        <input type="submit" value="Add Name">
+      </form>
+
+      <ul>
+        <li ng-repeat="people in persons">
+        {{people.name}}
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="spacer">
+    <h2>Shared Controller Data</h2>
+    <h3>Using a Service</h3>
+    <div ng-controller="SharedCtrlOne">
+      <input type="text" ng-model="data.message">
+      <h3>{{data.message}}</h3>
+    </div>
+
+    <div ng-controller="SharedCtrlTwo">
+      <input type="text" ng-model="data.message">
+      <h3>{{reversedMessage(data.message)}}</h3>
+    </div>
+  </div>
+
+  <div class="spacer">
+    <h2>Simple Calc</h2>
+    <h3>Firing a computeNeeded() on input change</h3>
+    <form ng-controller="StartUpController">
+      <p>Starting: <input ng-change="computeTotal()" ng-model="funding.startingEstimate"></p>
+      <p>Total Needed: {{funding.needed}}</p>
+    </form>
   </div>
 </div>

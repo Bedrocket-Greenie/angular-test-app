@@ -1,10 +1,12 @@
+#Bootstraps the angular project
 app = angular.module("Raffler", ["ngResource"])
 
 app.factory "Entry", ["$resource", ($resource) ->
   $resource("/entries/:id", {id: "@id"}, {update: {method: "PUT"}})
 ]
 
-@RaffleCtrl = ["$scope" , "Entry", ($scope, Entry) ->
+# $scope is what lets us bind data to elements in the UI.
+app.controller 'RaffleCtrl', ($scope, Entry) -> # <-- Defining a controller on an module to avoid global namespacing.
   $scope.entries = Entry.query()
 
   $scope.addEntry = ->
@@ -21,9 +23,10 @@ app.factory "Entry", ["$resource", ($resource) ->
       entry.winner = true
       entry.$update()
       $scope.lastWinner = entry
-]
 
-# Controllers according to egg.io
+# Controllers are classes or types that write to tell Angular 
+# which object or primitives make up your model by assigning them to the $scope
+# object passed into your controller.
 @FirstCtrl = ["$scope", ($scope) ->
   $scope.animals = []
 
@@ -47,7 +50,7 @@ app.factory "Person", ["$resource", ($resource) ->
 
 # Angular Services. Sharing data between 2 different controllers
 app.factory("Data", ()->
-    return { message: "I'm data from a service" }
+    return { message: "Data from a service" }
 )
 
 @SharedCtrlOne = ["$scope", "Data", ($scope, Data) ->
@@ -61,3 +64,10 @@ app.factory("Data", ()->
   $scope.reversedMessage = (message) ->
     return message.split("").reverse().join("")
 ]
+
+app.controller "StartUpController", ($scope) ->
+  $scope.funding = { startingEstimate: 0 } 
+
+  $scope.computeTotal = ->
+    $scope.funding.needed = $scope.funding.startingEstimate * 10
+
