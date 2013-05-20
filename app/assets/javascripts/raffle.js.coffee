@@ -6,7 +6,7 @@ app.factory "Entry", ["$resource", ($resource) ->
 ]
 
 # $scope is what lets us bind data to elements in the UI.
-app.controller 'RaffleCtrl', ($scope, Entry) -> # <-- Defining a controller on an module to avoid global namespacing.
+app.controller 'RaffleCtrl', ["$scope", "Entry", ($scope, Entry) -> # <-- Defining a controller on an module to avoid global namespacing.
   $scope.entries = Entry.query()
 
   $scope.addEntry = ->
@@ -24,6 +24,7 @@ app.controller 'RaffleCtrl', ($scope, Entry) -> # <-- Defining a controller on a
       entry.$update()
       $scope.lastWinner = entry
 
+]
 # Controllers are classes or types that write to tell Angular 
 # which object or primitives make up your model by assigning them to the $scope
 # object passed into your controller.
@@ -65,9 +66,9 @@ app.factory("Data", ()->
     return message.split("").reverse().join("")
 ]
 
-app.controller "StartUpController", ($scope) ->
+app.controller "StartUpController", ["$scope", ($scope) ->
   $scope.funding = { startingEstimate: 0 } 
 
   $scope.computeTotal = ->
     $scope.funding.needed = $scope.funding.startingEstimate * 10
-
+]
