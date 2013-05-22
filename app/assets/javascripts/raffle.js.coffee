@@ -71,4 +71,20 @@ app.controller "StartUpController", ["$scope", ($scope) ->
 
   $scope.computeTotal = ->
     $scope.funding.needed = $scope.funding.startingEstimate * 10
+
+  $scope.requestFunding = ->
+    window.alert("Sorry you need more money")
+
+  $scope.reset = ->
+    $scope.funding.startingEstimate =  0
+]
+
+
+app.controller "ShowCtrl", ["$scope", ($scope) ->
+  $scope.show = false
+  $scope.green = false
+
+  $scope.toggle = ->
+    $scope.show = !$scope.show
+    $scope.green = !$scope.highlight
 ]
